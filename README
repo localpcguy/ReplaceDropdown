@@ -1,0 +1,15 @@
+/****************************************************************
+replaceDropdown() swaps the dropdown for a Select List to use 
+                  HTML elements that can accept styling.
+Created by: Mike Behnke
+GitHub: https://github.com/localpcguy/ReplaceDropdown
+Version: 0.1a
+Params: Select ID
+Options: "defaults" 
+		divIDtext: "LinkList",
+		linkIDtext: "Link",
+		linkText: "",
+		parent: "",
+		flipTop: false,
+		ddClass: ""
+*****************************************************************/
