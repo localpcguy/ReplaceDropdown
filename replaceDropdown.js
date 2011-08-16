@@ -103,7 +103,7 @@ Options: "defaults"
 					$select.children("option").attr("selected", "");
 					$select.children("option").eq($(this).parent().index()).attr("selected", "selected");
 					$(".ddlist ul").slideUp("fast");
-					$(this).parents(".ddlist").find("#" + selectID + "Link").text($select.find(":selected").text());
+					$(this).parents(".ddlist").find("#" + selectID + "Link").text($("this").text());
 					$select.change();
 				});
 			},
