@@ -1,9 +1,6 @@
 /****************************************************************
 replaceDropdown() swaps the dropdown for a Select List to use 
                   HTML elements that can accept styling.
-Created by: Mike Behnke
-GitHub: https://github.com/localpcguy/ReplaceDropdown
-Version: 0.1a
 Params: Select ID
 Options: "defaults" 
 		divIDtext: "LinkList",
@@ -57,7 +54,7 @@ Options: "defaults"
 				var linkID = element.id + self.replaceDropdown.settings.linkIDtext;
 				var $prodOptions = $element.find("option");
 				var prodList = '<div id="' + divID + '" class="ddlist">\n<a href="#" id="' + linkID + '">' + self.replaceDropdown.settings.linkText + '</a>\n<ul>\n';
-				for (var i = 1; i < $prodOptions.length; i++) {
+				for (var i = 0; i < $prodOptions.length; i++) {
 					prodList += '<li><a href="' + $prodOptions.eq(i).text() + '" rel="' + $prodOptions.eq(i).val() + '">' + $prodOptions.eq(i).text() + '</a></li>\n';
 				}
 				prodList += '</ul>\n</div>\n';
@@ -67,13 +64,13 @@ Options: "defaults"
 
 				return divID;
 			},
-			setEventsForDropdown : function (divID, self) {
-				var $openDiv = $("#"+divID);
-				$openDiv.unbind().click(function (e) {
+			setEventsForDropdown: function(divID, self) {
+				var $openDiv = $("#" + divID);
+				$openDiv.unbind().click(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					var theID = $openDiv.attr("id");
-					$(".dropdown.open:not('#" + theID + "')").each(function(){
+					$(".dropdown.open:not('#" + theID + "')").each(function() {
 						helpers.closeDropdown(this.id); // close any exisiting open dropdowns
 					});
 					if ($(this).hasClass("open") == false && $(this).hasClass("disabled") == false) {
@@ -84,10 +81,10 @@ Options: "defaults"
 						}
 						$thisUL = $(this).find("ul");
 						$thisUL.scrollTop(topOffset);
-						$thisUL.css({ "visibility" : "visible" });
+						$thisUL.css({ "visibility": "visible" });
 						$thisUL.slideDown("fast");
 						$(this).addClass("open");
-						$("body").click(function (e) {
+						$("body").click(function(e) {
 							$("body").unbind();
 							helpers.closeDropdown(divID);
 						});
@@ -98,27 +95,27 @@ Options: "defaults"
 				});
 				$openDiv.click();
 			},
-			assignDropdownLinkEvents : function () {
+			assignDropdownLinkEvents: function() {
 				$(".ddlist ul li a").bind("click", function(e) {
-                    e.preventDefault();
-                    var selectID = $(this).parents(".ddlist").attr("id").replace("LinkList", "");
-                    var $select = $("#" + selectID);
-                    $select.children("option").attr("selected", "");
-                    $select.children("option").eq($(this).parent().index() + 1).attr("selected", "selected");
-                    $(".ddlist ul").slideUp("fast");
-                    $(this).parents(".ddlist").find("#" + selectID + "Link").text($select.find(":selected").text());
-                    $select.change();
-                });
+					e.preventDefault();
+					var selectID = $(this).parents(".ddlist").attr("id").replace("LinkList", "");
+					var $select = $("#" + selectID);
+					$select.children("option").attr("selected", "");
+					$select.children("option").eq($(this).parent().index()).attr("selected", "selected");
+					$(".ddlist ul").slideUp("fast");
+					$(this).parents(".ddlist").find("#" + selectID + "Link").text($select.find(":selected").text());
+					$select.change();
+				});
 			},
-			closeDropdown : function (divID) {
+			closeDropdown: function(divID) {
 				var $openDiv = $("#" + divID);
 				if ($openDiv.hasClass("open")) {
-					$openDiv.children("ul").css({ "visibility" : "hidden" });
+					$openDiv.children("ul").css({ "visibility": "hidden" });
 					$openDiv.removeClass("open");
 					$openDiv.find("a").blur();
 				}
 			},
-			flipDropdown: function (item, self) {
+			flipDropdown: function(item, self) {
 				$(item).find("ul").removeClass("showTop");
 				var offsetTop = $(item).find("ul").offset().top;
 				var tabOffsetTop = $(item).parents(self.replaceDropdown.settings.parent).length ? $(item).parents(self.replaceDropdown.settings.parent).offset().top : 0;
@@ -144,7 +141,7 @@ Options: "defaults"
 			$.error('Method "' + method + '" does not exist in replaceDropdown plugin!');
 		};
 	};
-		
+
 	// default options
 	$.fn.replaceDropdown.defaults = {
 		divIDtext: "LinkList",
