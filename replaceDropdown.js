@@ -6,9 +6,9 @@ Options: "defaults"
 		divIDtext: "LinkList",
 		linkIDtext: "Link",
 		linkText: "",
-		parent: "",
+		parent: "", // required for flipTop
 		flipTop: false,
-		ddClass: ""
+		ddClass: "ddlist"
 *****************************************************************/
 (function($) {
 
@@ -45,7 +45,7 @@ Options: "defaults"
 		var helpers = {
 			initEvents: function(divID, self) {
 				helpers.setEventsForDropdown(divID, self);
-				helpers.assignDropdownLinkEvents();
+				helpers.assignDropdownLinkEvents(self);
 				helpers.closeDropdown(divID);
 			},
 			buildDropdown: function($element, element, self) {
@@ -53,7 +53,7 @@ Options: "defaults"
 				var divID = element.id + self.replaceDropdown.settings.divIDtext;
 				var linkID = element.id + self.replaceDropdown.settings.linkIDtext;
 				var $prodOptions = $element.find("option");
-				var prodList = '<div id="' + divID + '" class="ddlist">\n<a href="#" id="' + linkID + '">' + self.replaceDropdown.settings.linkText + '</a>\n<ul>\n';
+				var prodList = '<div id="' + divID + '" class="' + self.replaceDropdown.settings.ddClass + '">\n<a href="#" id="' + linkID + '">' + self.replaceDropdown.settings.linkText + '</a>\n<ul>\n';
 				for (var i = 0; i < $prodOptions.length; i++) {
 					prodList += '<li><a href="' + $prodOptions.eq(i).text() + '" rel="' + $prodOptions.eq(i).val() + '">' + $prodOptions.eq(i).text() + '</a></li>\n';
 				}
@@ -93,17 +93,16 @@ Options: "defaults"
 						$("body").unbind();
 					}
 				});
-				$openDiv.click();
 			},
-			assignDropdownLinkEvents: function() {
-				$(".ddlist ul li a").bind("click", function(e) {
+			assignDropdownLinkEvents: function(self) {
+				$("." + self.replaceDropdown.settings.ddClass + " ul li a").bind("click", function(e) {
 					e.preventDefault();
-					var selectID = $(this).parents(".ddlist").attr("id").replace("LinkList", "");
+					var selectID = $(this).parents("." + self.replaceDropdown.settings.ddClass).attr("id").replace(self.replaceDropdown.settings.divIDtext, "");
 					var $select = $("#" + selectID);
 					$select.children("option").attr("selected", "");
 					$select.children("option").eq($(this).parent().index()).attr("selected", "selected");
-					$(".ddlist ul").slideUp("fast");
-					$(this).parents(".ddlist").find("#" + selectID + "Link").text($("this").text());
+					$("." + self.replaceDropdown.settings.ddClass + " ul").slideUp("fast");
+					$(this).parents("." + self.replaceDropdown.settings.ddClass).find("#" + selectID + self.replaceDropdown.settings.linkIDtext).text($(this).text());
 					$select.change();
 				});
 			},
@@ -147,9 +146,9 @@ Options: "defaults"
 		divIDtext: "LinkList",
 		linkIDtext: "Link",
 		linkText: "",
-		parent: "",
+		parent: "", // required for flipTop
 		flipTop: false,
-		ddClass: ""
+		ddClass: "ddlist"
 	};
 	// this will hold the merged default and user-provided options
 	$.fn.replaceDropdown.settings = {};
