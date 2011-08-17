@@ -9,6 +9,8 @@ Options: "defaults"
 		parent: "", // required for flipTop
 		flipTop: false,
 		ddClass: "ddlist"
+Usage:	$("select").replaceDropdown();
+		$("select").replaceDropdown({ ddClass: "dropdownList"});
 *****************************************************************/
 (function($) {
 
