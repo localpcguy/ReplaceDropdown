@@ -1,0 +1,62 @@
+/****************************************************************
+  Sample styles for replaceDropdown
+****************************************************************/
+select {
+    margin: 10px 0 5px;
+    width: 200px;
+}
+.ddlist {
+    position: relative;
+    z-index: 99;
+}
+.ddlist > a {
+    background: url("http://www.johnfrieda.com/en-US/ProductAdvisor/images/dropdownArrows.gif") no-repeat scroll 200px 0 rgba(61, 61, 61, 0.5);
+    border: 1px solid #171717;
+    color: #FFFFFF;
+    display: block;
+    font: bold 12px/1 arial,helvetica,sans-serif;
+    height: 18px;
+    margin: 0;
+    padding: 4px 0 0 15px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: capitalize;
+    width: 200px;
+}
+.ddlist a.open {
+    background-position: 200px -23px;
+}
+.ddlist ul {
+    background: none repeat scroll 0 0 #C8C8C8;
+    border: 1px solid #171717;
+    color: #171717;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 23px;
+    width: 215px;
+    z-index: 999;
+}
+* html .ddlist ul {
+    top: 23px;
+}
+* html .ddlist ul {
+    top: 23px;
+}
+.ddlist ul.openTop {
+    bottom: 23px;
+    top: auto;
+}
+.ddlist ul li a {
+    color: #000000;
+    display: block;
+    font: bold 12px/1 arial,helvetica,sans-serif;
+    letter-spacing: normal;
+    padding: 4px 15px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.ddlist ul li a:hover {
+    color: #FFFFFF;
+    background: #adadad;
+}
