@@ -37,12 +37,6 @@ select {
     width: 215px;
     z-index: 999;
 }
-* html .ddlist ul {
-    top: 23px;
-}
-* html .ddlist ul {
-    top: 23px;
-}
 .ddlist ul.openTop {
     bottom: 23px;
     top: auto;
