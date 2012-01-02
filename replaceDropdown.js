@@ -72,7 +72,7 @@ Usage:	$("select").replaceDropdown();
 					e.preventDefault();
 					e.stopPropagation();
 					var theID = $openDiv.attr("id");
-					$(".dropdown.open:not('#" + theID + "')").each(function() {
+					$("." + self.replaceDropdown.settings.ddClass + ".open:not('#" + theID + "')").each(function() {
 						helpers.closeDropdown(this.id); // close any exisiting open dropdowns
 					});
 					if ($(this).hasClass("open") == false && $(this).hasClass("disabled") == false) {
