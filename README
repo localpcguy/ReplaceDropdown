@@ -1,15 +1,24 @@
 /****************************************************************
-replaceDropdown() swaps the dropdown for a Select List to use 
-                  HTML elements that can accept styling.
+replaceDropdown()	swaps the dropdown for a Select List to use 
+			HTML elements that can accept styling.
 Created by: Mike Behnke
 GitHub: https://github.com/localpcguy/ReplaceDropdown
-Version: 0.1a
+Version: 0.2
 Params: Select ID
-Options: "defaults" 
-		divIDtext: "LinkList",
-		linkIDtext: "Link",
-		linkText: "",
-		parent: "",
-		flipTop: false,
-		ddClass: ""
+Option defaults:
+			divIDtext: "LinkList",
+			linkIDtext: "Link",
+			linkText: "",
+			parent: "", // required for flipTop
+			flipTop: false,
+			ddClass: "ddlist",
+			hideFirst: true
+Usage:	$("select").replaceDropdown();
+		$("select").replaceDropdown({ ddClass: "dropdownList"});
+ToDo:	
+	1) Switch to class based selector rather than ID
+	2) Store created elements in closure for future manipulation rather than lookup each time
+	3) Setup timer variable and option to auto-close after the timer expires
+	4) Refactor code for size/performance
+	5) Refactor code into better "plugin" boilerplate
 *****************************************************************/
