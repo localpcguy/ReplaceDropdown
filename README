@@ -14,7 +14,7 @@ Option defaults:
 			ddClass: "ddlist",
 			hideFirst: true
 Usage:	$("select").replaceDropdown();
-		$("select").replaceDropdown({ ddClass: "dropdownList"});
+	$("select").replaceDropdown({ ddClass: "dropdownList"});
 ToDo:	
 	1) Switch to class based selector rather than ID
 	2) Store created elements in closure for future manipulation rather than lookup each time
